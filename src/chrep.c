@@ -30,13 +30,15 @@ int main(int argc, char **argv) {
 
     if (argc == 1) {
         fprintf(stderr, "USAGE: %s 'regex' files\n", argv[0]);
-    }
-    if (argc == 2) {
-        fid = stdin;
-        matchInput(fid, "", argv[1]);
+        return 0;
     }
 
     strncpy(regex, argv[1], MAXLINE);
+
+    if (argc == 2) {
+        fid = stdin;
+        matchInput(fid, "", regex);
+    }
 
     if (argc > 2) {
         for (i = 2; i < argc; i++) {
@@ -53,4 +55,4 @@ int main(int argc, char **argv) {
     }
 
     return 0;
-} // End Main
+}
